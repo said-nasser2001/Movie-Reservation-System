@@ -3,26 +3,33 @@ package com.spring.MovieReservationSystem.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
+import java.sql.Date;
 import java.util.Set;
 
 @Entity
-@Table(name = "user")
-public class User {
+@Table(name = "users")
+@Getter @Setter
+public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
-    private long id;
+    private int id;
 
-    private String name;
+    private String username;
     @Column(unique=true)
     private String email;
 
-    @Column(name = "phone")
+    @Column(name = "mobile_number")
     private String mobileNumber;
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    private String pwd;
+    private String password;
+    @Column(name = "create_dt")
+    @JsonIgnore
+    private Date createDt;
 
     private String role;
 
