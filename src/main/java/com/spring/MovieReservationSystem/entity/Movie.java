@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "movies")
@@ -21,5 +22,7 @@ public class Movie {
     @Column(name = "release_date")
     private Date releaseDate;
     private String rating;
+    @OneToMany(mappedBy = "movie")
+    List<Screening> movies;
 
 }
