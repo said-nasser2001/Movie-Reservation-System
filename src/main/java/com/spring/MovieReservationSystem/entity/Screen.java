@@ -1,6 +1,8 @@
 package com.spring.MovieReservationSystem.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -21,8 +23,9 @@ public class Screen {
     private int seatingCapacity;
     @ManyToOne
     @JoinColumn(name = "theater_id")
-    @JsonBackReference
+    @JsonManagedReference
     private Theater theater;
     @OneToMany(mappedBy = "screen")
+    @JsonIgnore
     List<Screening> screenings;
 }

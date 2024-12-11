@@ -4,13 +4,18 @@ import com.spring.MovieReservationSystem.Repository.ScreenRepository;
 import com.spring.MovieReservationSystem.Repository.TheaterRepository;
 import com.spring.MovieReservationSystem.entity.Screen;
 import com.spring.MovieReservationSystem.entity.Theater;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class ScreenService {
+    @Autowired
     private ScreenRepository screenRepository;
+    @Autowired
     private TheaterRepository theaterRepository;
 
     public Screen saveScreen(Screen screen,int theaterId) {

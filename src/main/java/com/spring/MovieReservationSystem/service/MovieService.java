@@ -4,6 +4,7 @@ import com.spring.MovieReservationSystem.Repository.MovieRepository;
 import com.spring.MovieReservationSystem.entity.Movie;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -31,6 +32,7 @@ public class MovieService {
     {
         return movieRepository.save(movie);
     }
+
     public void saveAllMovies(List<Movie>movies)
     {
         movieRepository.saveAll(movies);

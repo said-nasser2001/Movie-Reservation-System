@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.sql.Date;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -36,5 +37,6 @@ public class Customer {
     @OneToMany(mappedBy = "customer", fetch = FetchType.EAGER)
     @JsonIgnore
     private Set<Authority> authorities;
-
+    @OneToMany(mappedBy = "customer")
+    List<Reservation> reservations;
 }

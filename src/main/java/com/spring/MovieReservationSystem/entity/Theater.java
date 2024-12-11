@@ -1,5 +1,7 @@
 package com.spring.MovieReservationSystem.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -20,11 +22,8 @@ public class Theater {
     private String theaterName;
     private String location;
     @OneToMany(mappedBy = "theater", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
+    @JsonIgnore
     List<Screen> screens= new ArrayList<>();
-    public void addScreen(Screen screen) {
-        screens.add(screen);
-        screen.setTheater(this);
-    }
+
 
 }
